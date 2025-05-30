@@ -1,7 +1,8 @@
 //Parameters
 param resourceGroupName string
 param location string
-param storageAccountName string = 'mystorageacctest01'
+param storageAccountNames array
+
 
 //Deploy resource group at subscription scope
 targetScope = 'subscription'
@@ -20,9 +21,10 @@ module ipgroup2 './modules/ipgroup.bicep' = {
   }
 }
 
-module storageAccount './modules/storage-account.bicep' = {
+module storageAccounts './modules/storage-account.bicep' = [for name in storageAccountNames: {
+  name: 'storage-${name}'
   scope: rg
   params: {
-    storageAccountName: storageAccountName
+    storageAccountName: name
   }
-}
+}]
