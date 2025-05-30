@@ -16,10 +16,13 @@ jobs:
         deploy:
           steps:
             - checkout: self
-            - task: CommandLine@2
+            - task: AzureCLI@2
               displayName: 'Check Bicep version'
               inputs:
-                script: |
+                azureSubscription: '${{ parameters.serviceConnection }}'
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
                   bicep --version || echo "Bicep CLI not found"
 #            - task: AzureCLI@2
 #              inputs:
