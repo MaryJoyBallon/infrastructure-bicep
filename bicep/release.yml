@@ -27,4 +27,4 @@ jobs:
                   bicep build-params "$(System.DefaultWorkingDirectory)/bicep/parameters/common.bicepparam"
 
                   echo "Generated parameter file:"
-                  ls "$(System.DefaultWorkingDirectory)/bicep/parameters/common.bicepparam.json"
+                  ls "$(System.DefaultWorkingDirectory)/bicep/parameters/"
