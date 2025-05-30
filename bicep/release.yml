@@ -15,7 +15,6 @@ jobs:
       runOnce:
         deploy:
           steps:
-            - checkout: azure-api-pipelines
             - task: AzureCLI@2
               inputs:
                 azureSubscription: '${{ parameters.serviceConnection }}'
