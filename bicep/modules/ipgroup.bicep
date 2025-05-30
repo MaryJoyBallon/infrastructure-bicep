@@ -1,5 +1,3 @@
-targetScope = 'resourceGroup'
-
 param location string = resourceGroup().location
 param ipgroupName string
 param ipAddresses string[]
