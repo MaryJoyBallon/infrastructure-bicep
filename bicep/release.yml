@@ -15,6 +15,7 @@ jobs:
       runOnce:
         deploy:
           steps:
+            - checkout: infrastructure-bicep
             - task: AzureCLI@2
               inputs:
                 azureSubscription: '${{ parameters.serviceConnection }}'
@@ -23,4 +24,4 @@ jobs:
                 inlineScript: |
                   az deployment group create \
                   --resource-group rg-mballon \
-                  --template-file main.bicep
+                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep
