@@ -4,15 +4,13 @@
 stages:
   - stage: Deploy_Dev
     displayName: "Deploy to Dev Environment"
-#    variables:
-#      - template: parameters/dev.parameters.json
-#        parameters:
-#          Environment: 'dev'
+    variables:
+      - template: parameters/dev.parameters.yml
     jobs:
       - template: release.yml
         parameters:
-          doEnvironment: ${{ DO_ENV }}
-          serviceConnection: ${{ SERVICE_CONNECTION }}
+          doEnvironment: ${{ variables.DO_ENV }}
+          serviceConnection: ${{ variables.SERVICE_CONNECTION }}
 
 ###########################################
 ################### PROD ##################
@@ -20,12 +18,10 @@ stages:
   - ${{ if contains(variables['Build.SourceBranch'], 'Release-v') }}:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
-#      variables:
-#        - template: parameters/prod.parameters.json
-#          parameters:
-#            Environment: 'prod'
+      variables:
+        - template: parameters/prod.parameters.yml
       jobs:
         - template: release.yml
           parameters:
-            doEnvironment: ${{ DO_ENV }}
-            serviceConnection: ${{ SERVICE_CONNECTION }} 
+            doEnvironment: ${{ variables.DO_ENV }}
+            serviceConnection: ${{ variables.SERVICE_CONNECTION }} 
