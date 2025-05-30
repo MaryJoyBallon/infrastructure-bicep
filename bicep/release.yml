@@ -29,3 +29,14 @@ jobs:
 
                   echo "Generated parameter file:"
                   ls "$(System.DefaultWorkingDirectory)"/bicep/parameters/
+            - task: AzureCLI@2
+              inputs:
+                azureSubscription: '${{ parameters.serviceConnection }}'
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  az deployment sub create \
+                  --location eastus \
+                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
+                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam.json
+                  --verbose --only-show-errors
