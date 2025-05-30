@@ -5,7 +5,7 @@ stages:
   - stage: Deploy_Dev
     displayName: "Deploy to Dev Environment"
     variables:
-      - template: env-variables/dev.yml
+      - template: parameters/dev.parameters.json
         parameters:
           Environment: 'dev'
     jobs:
@@ -21,7 +21,7 @@ stages:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
       variables:
-        - template: env-variables/dev.yml
+        - template: parameters/prod.parameters.json
           parameters:
             Environment: 'prod'
       jobs:
