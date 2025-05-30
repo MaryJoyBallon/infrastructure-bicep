@@ -15,7 +15,7 @@ jobs:
       runOnce:
         deploy:
           steps:
-            - checkout: infrastructure-bicep
+            - checkout: self
             - task: AzureCLI@2
               inputs:
                 azureSubscription: '${{ parameters.serviceConnection }}'
