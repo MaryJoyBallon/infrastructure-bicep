@@ -1,6 +1,6 @@
 //Parameters
 param resourceGroupName string
-param location string = 'East US'
+param location string
 param storageAccountName string = 'mystorageacctest01'
 
 //Deploy resource group at subscription scope
