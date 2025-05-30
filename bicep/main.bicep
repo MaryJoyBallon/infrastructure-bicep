@@ -22,7 +22,7 @@ module ipgroup2 './modules/ipgroup.bicep' = {
 }
 
 module storageAccounts './modules/storage-account.bicep' = [for name in storageAccountNames: {
-  name: 'storage-${name}'
+  name: '${name}'
   scope: rg
   params: {
     storageAccountName: name
