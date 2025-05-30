@@ -16,13 +16,18 @@ jobs:
         deploy:
           steps:
             - checkout: self
-            - task: AzureCLI@2
+            - task: CommandLine@2
+              displayName: 'Check Bicep version'
               inputs:
-                azureSubscription: '${{ parameters.serviceConnection }}'
-                scriptType: 'bash'
-                scriptLocation: 'inlineScript'
-                inlineScript: |
-                  az deployment sub create \
-                  --location eastus \
-                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
-                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam
+                script: |
+                  bicep --version || echo "Bicep CLI not found"
+#            - task: AzureCLI@2
+#              inputs:
+#                azureSubscription: '${{ parameters.serviceConnection }}'
+#                scriptType: 'bash'
+#                scriptLocation: 'inlineScript'
+#               inlineScript: |
+#                 az deployment sub create \
+#                 --location eastus \
+#                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
+#                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam
