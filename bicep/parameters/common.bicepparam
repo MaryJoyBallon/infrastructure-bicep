@@ -3,9 +3,9 @@ using '../main.bicep'
 param resourceGroupName = 'rg-mballon'
 param location = 'eastus'
 param storageAccountNames = [
-  'acctest01'
-  'acctest02'
-  'acctest03'
+  'stcstorageaccount01'
+  'stcstorageaccount02'
+  'stcstorageaccount03'
 ]
 
 // Use this when you 

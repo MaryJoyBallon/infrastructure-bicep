@@ -39,4 +39,3 @@ jobs:
                   --location eastus \
                   --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
                   --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam.json
-                  --verbose --only-show-errors
