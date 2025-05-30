@@ -8,3 +8,20 @@ param storageAccountNames = [
   'acctest03'
 ]
 
+// Use this when you 
+/*
+param storageAccounts = [
+  {
+    storageAccountName: 'acctest01'
+    containerName: 'logs'
+  }
+  {
+    storageAccountName: 'acctest02'
+    containerName: 'metrics'
+  }
+  {
+    storageAccountName: 'acctest03'
+    containerName: 'default'
+  }
+]
+*/

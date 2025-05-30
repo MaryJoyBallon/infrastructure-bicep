@@ -24,5 +24,5 @@ jobs:
                 inlineScript: |
                   az deployment sub create \
                   --location eastus \
-                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam \
-                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep
+                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
+                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam
