@@ -2,7 +2,7 @@
 #################### DEV ##################
 ###########################################
 stages:
-  - ${{ if contains(variables['Build.SourceBranch'], 'feature' }}:
+  - ${{ if contains(variables['Build.SourceBranch'], 'feature') }}:
     - stage: Deploy_Dev
       displayName: "Deploy to Dev Environment"
       variables:
@@ -18,7 +18,7 @@ stages:
 ###########################################
 ################### PROD ##################
 ###########################################
-  - ${{ if contains(variables['Build.SourceBranch'], 'Release-v' }}:
+  - ${{ if contains(variables['Build.SourceBranch'], 'Release-v') }}:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
       variables:
