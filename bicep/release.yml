@@ -17,12 +17,14 @@ jobs:
           steps:
             - checkout: self
             - task: AzureCLI@2
+              displayName: 'Build .bicepparam to .json'
               inputs:
                 azureSubscription: '${{ parameters.serviceConnection }}'
                 scriptType: 'bash'
                 scriptLocation: 'inlineScript'
                 inlineScript: |
-                  az deployment sub create \
-                  --location eastus \
-                  --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
-                  --parameters "$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam
+                  echo "Building bicep param file..."
+                  bicep build-params "$(System.DefaultWorkingDirectory)/bicep/parameters/common.bicepparam"
+
+                  echo "Generated parameter file:"
+                  ls "$(System.DefaultWorkingDirectory)/bicep/parameters/common.bicepparam.json"
