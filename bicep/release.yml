@@ -30,6 +30,7 @@ jobs:
                   echo "Generated parameter file:"
                   ls "$(System.DefaultWorkingDirectory)"/bicep/parameters/
             - task: AzureCLI@2
+              displayName: 'Deploy Bicep Template'
               inputs:
                 azureSubscription: '${{ parameters.serviceConnection }}'
                 scriptType: 'bash'
