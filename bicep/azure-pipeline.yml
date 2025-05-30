@@ -11,8 +11,8 @@ stages:
     jobs:
       - template: release.yml
         parameters:
-          doEnvironment: ${{ variables.DO_ENV }}
-          serviceConnection: ${{ variables.SERVICE_CONNECTION }}
+          doEnvironment: ${{ DO_ENV }}
+          serviceConnection: ${{ SERVICE_CONNECTION }}
 
 ###########################################
 ################### PROD ##################
@@ -27,5 +27,5 @@ stages:
       jobs:
         - template: release.yml
           parameters:
-            doEnvironment: ${{ variables.DO_ENV }}
-            serviceConnection: ${{ variables.SERVICE_CONNECTION }} 
+            doEnvironment: ${{ DO_ENV }}
+            serviceConnection: ${{ SERVICE_CONNECTION }} 
