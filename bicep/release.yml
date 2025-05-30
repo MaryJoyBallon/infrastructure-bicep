@@ -22,6 +22,6 @@ jobs:
                 scriptLocation: 'inlineScript'
                 inlineScript: |
                   az deployment group create \
-                  --parameters resourceGroupName=rg-mballon \
+                  --resource-group rg-mballon \
                   --location eastus \
                   --template-file main.bicep
