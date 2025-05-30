@@ -4,10 +4,10 @@
 stages:
   - stage: Deploy_Dev
     displayName: "Deploy to Dev Environment"
-    variables:
-      - template: parameters/dev.parameters.json
-        parameters:
-          Environment: 'dev'
+#    variables:
+#      - template: parameters/dev.parameters.json
+#        parameters:
+#          Environment: 'dev'
     jobs:
       - template: release.yml
         parameters:
@@ -20,10 +20,10 @@ stages:
   - ${{ if contains(variables['Build.SourceBranch'], 'Release-v') }}:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
-      variables:
-        - template: parameters/prod.parameters.json
-          parameters:
-            Environment: 'prod'
+#      variables:
+#        - template: parameters/prod.parameters.json
+#          parameters:
+#            Environment: 'prod'
       jobs:
         - template: release.yml
           parameters:
