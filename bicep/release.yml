@@ -10,7 +10,7 @@ parameters:
 
 jobs:
 - deployment: deploy
-  displayName: Infrastructure deploy
+  displayName: 'Infrastructure deploy - ${{ parameters.deploymentEnvironment }} '
   pool:
     vmImage: 'windows-latest'
   timeoutInMinutes: 180
