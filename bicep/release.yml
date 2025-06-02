@@ -32,7 +32,7 @@ jobs:
                   --outfile "$(System.DefaultWorkingDirectory)"/bicep/parameters/main.${{ parameters.deploymentEnvironment }}.bicepparam.json
 
                   echo "Generated parameter file:"
-                  ls "$(System.DefaultWorkingDirectory)"/bicep/parameters/
+                  ls "$(System.DefaultWorkingDirectory)"/bicep/parameters/main.${{ parameters.deploymentEnvironment }}.bicepparam.json
             - task: AzureCLI@2
               displayName: 'Deploy Bicep Template'
               inputs:
