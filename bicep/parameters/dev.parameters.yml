@@ -1,3 +1,0 @@
-variables:
-  DO_ENV: 'sc-dev'
-  SERVICE_CONNECTION: 'Infra-Bicep'

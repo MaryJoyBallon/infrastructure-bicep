@@ -5,11 +5,14 @@ stages:
   - stage: Deploy_Dev
     displayName: "Deploy to Dev Environment"
     variables:
-      - template: parameters/dev.parameters.yml
+      - template: parameters/envVariables.yml
+        parameters:
+            deploymentEnvironment: 'dev'
     jobs:
       - template: release.yml
         parameters:
-          doEnvironment: ${{ variables.DO_ENV }}
+          adoEnvironment: ${{ variables.DO_ENV }}
+          deploymentEnvironment: 'dev'
           serviceConnection: ${{ variables.SERVICE_CONNECTION }}
 
 ###########################################
@@ -19,9 +22,12 @@ stages:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
       variables:
-        - template: parameters/prod.parameters.yml
+        - template: parameters/envVariables.yml
+          parameters:
+            deploymentEnvironment: 'prod'
       jobs:
         - template: release.yml
           parameters:
-            doEnvironment: ${{ variables.DO_ENV }}
-            serviceConnection: ${{ variables.SERVICE_CONNECTION }} 
+            adoEnvironment: ${{ variables.DO_ENV }}
+            deploymentEnvironment: 'prod'
+            serviceConnection: ${{ variables.SERVICE_CONNECTION }}

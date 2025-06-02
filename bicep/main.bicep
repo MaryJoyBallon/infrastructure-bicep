@@ -12,7 +12,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   location: location
 }
 
-module ipgroup2 './modules/ipgroup.bicep' = {
+module ipgroup2 './modules/ipGroup.bicep' = {
   scope: rg
   name: 'ipgroupDEPLOYMENT'
   params: {
@@ -21,7 +21,7 @@ module ipgroup2 './modules/ipgroup.bicep' = {
   }
 }
 
-module storageAccounts './modules/storage-account.bicep' = [for name in storageAccountNames: {
+module storageAccounts './modules/storageAccount.bicep' = [for name in storageAccountNames: {
   name: '${name}'
   scope: rg
   params: {

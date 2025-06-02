@@ -1,8 +1,12 @@
 parameters:
+- name: 'adoEnvironment'
+  default: ''
+  displayName: Name of the DevOps environment for approvals (sc-dev or sc-prod)
+- name: deploymentEnvironment
+  default: ''
+  displayName: Actual target environment used in Bicep (dev or prod)
 - name: 'serviceConnection'
-  default: ''
-- name: 'doEnvironment'
-  default: ''
+  default: 'Azure Subscription Service Connection'
 
 jobs:
 - deployment: deploy
@@ -10,7 +14,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   timeoutInMinutes: 180
-  environment: ${{ parameters.doEnvironment }} 
+  environment: ${{ parameters.adoEnvironment }} 
   strategy:
       runOnce:
         deploy:
@@ -25,7 +29,7 @@ jobs:
                 inlineScript: |
                   echo "Building bicep param file..."
                   bicep build-params "$(System.DefaultWorkingDirectory)/bicep/parameters/common.bicepparam" \
-                  --outfile "$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam.json
+                  --outfile "$(System.DefaultWorkingDirectory)"/bicep/parameters/main.${{ parameters.deploymentEnvironment }}.bicepparam.json
 
                   echo "Generated parameter file:"
                   ls "$(System.DefaultWorkingDirectory)"/bicep/parameters/
@@ -39,4 +43,4 @@ jobs:
                   az deployment sub create \
                   --location eastus \
                   --template-file "$(System.DefaultWorkingDirectory)"/bicep/main.bicep \
-                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/common.bicepparam.json
+                  --parameters @"$(System.DefaultWorkingDirectory)"/bicep/parameters/main.${{ parameters.deploymentEnvironment }}.bicepparam.json
