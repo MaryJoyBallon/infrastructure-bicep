@@ -28,7 +28,7 @@ jobs:
                 scriptLocation: 'inlineScript'
                 inlineScript: |
                   echo "Building bicep param file..."
-                  bicep build-params "$(System.DefaultWorkingDirectory)/bicep/parameters/common.bicepparam" \
+                  bicep build-params "$(System.DefaultWorkingDirectory)/bicep/parameters/main.${{ parameters.deploymentEnvironment }}.bicepparam" \
                   --outfile "$(System.DefaultWorkingDirectory)"/bicep/parameters/main.${{ parameters.deploymentEnvironment }}.bicepparam.json
 
                   echo "Generated parameter file:"
