@@ -5,7 +5,7 @@ param (
 
   [Parameter()]
   [ValidateSet('dev', 'prod')]
-  [string] $Environment = 'dev',
+  [string] $Environment,
   [string] $TemplateBasePath
 )
 

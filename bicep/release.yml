@@ -1,0 +1,33 @@
+parameters:
+- name: 'adoEnvironment'
+  default: ''
+  displayName: Name of the DevOps environment for approvals (sc-dev or sc-prod)
+- name: deploymentEnvironment
+  default: ''
+  displayName: Actual target environment used in Bicep (dev or prod)
+- name: 'serviceConnection'
+  default: 'Azure Subscription Service Connection'
+
+jobs:
+- deployment: deploy
+  displayName: 'Infrastructure deploy - ${{ parameters.deploymentEnvironment }} '
+  pool:
+    vmImage: 'windows-latest'
+  timeoutInMinutes: 180
+  environment: ${{ parameters.adoEnvironment }} 
+  strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+            - task: AzurePowerShell@5
+              displayName: 'Deploy Bicep Template'
+              inputs:
+                azureSubscription: ${{ parameters.serviceConnection }}
+                ScriptType: 'FilePath'
+                ScriptPath: '$(System.DefaultWorkingDirectory)/bicep/scripts/deploy-main.ps1'
+                ScriptArguments: >
+                  -Environment ${{ parameters.deploymentEnvironment }}
+                  -TemplateBasePath "$(System.DefaultWorkingDirectory)"
+                azurePowerShellVersion: 'LatestVersion'
+                pwsh: true
