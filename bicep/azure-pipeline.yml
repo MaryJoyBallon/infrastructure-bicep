@@ -26,6 +26,9 @@ stages:
                       azureSubscription: ${{ variables.SERVICE_CONNECTION }}
                       ScriptType: 'FilePath'
                       ScriptPath: '$(System.DefaultWorkingDirectory)/bicep/scripts/deploy-main.ps1'
+                      ScriptArguments: >
+                        -Environment dev
+                        -TemplateBasePath "$(System.DefaultWorkingDirectory)"
                       azurePowerShellVersion: 'LatestVersion'
                       pwsh: true
 
@@ -57,5 +60,8 @@ stages:
                         azureSubscription: ${{ variables.SERVICE_CONNECTION }}
                         ScriptType: 'FilePath'
                         ScriptPath: '$(System.DefaultWorkingDirectory)/bicep/scripts/deploy-main.ps1'
+                      ScriptArguments: >
+                        -Environment prod
+                        -TemplateBasePath "$(System.DefaultWorkingDirectory)"
                         azurePowerShellVersion: 'LatestVersion'
                         pwsh: true

@@ -1,16 +1,21 @@
 [CmdletBinding()]
 param (
   [Parameter()]
-  [switch] $WhatIf
+  [switch] $WhatIf,
+
+  [Parameter()]
+  [ValidateSet('dev', 'prod')]
+  [string] $Environment = 'dev',
+  [string] $TemplateBasePath
 )
 
 $ParamSplat = @{
-  #Required
-  location              = "eastus"
-  TemplateFile          = '$(System.DefaultWorkingDirectory)\bicep\main.bicep'
-  TemplateParameterFile = '$(System.DefaultWorkingDirectory)\bicep\parameters\main.dev.bicepparam'
+  location              = 'eastus'
+  TemplateFile          = "$TemplateBasePath\bicep\main.bicep"
+  TemplateParameterFile = "$TemplateBasePath\bicep\parameters\main.$Environment.bicepparam"
 }
-If ($Whatif ) {
+
+if ($WhatIf) {
   $ParamSplat.Add('WhatIf', $true)
 }
 
