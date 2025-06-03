@@ -25,3 +25,4 @@ param storageAccountNames = [
     }
   }
 ]
+param keyVaultName = 'stckeyVaulttest'
