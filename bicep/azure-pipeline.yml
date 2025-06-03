@@ -9,11 +9,25 @@ stages:
         parameters:
             deploymentEnvironment: 'dev'
     jobs:
-      - template: release.yml
-        parameters:
-          adoEnvironment: ${{ variables.DO_ENV }}
-          deploymentEnvironment: 'dev'
-          serviceConnection: ${{ variables.SERVICE_CONNECTION }}
+      - deployment: deploy
+        displayName: 'Infrastructure deploy - dev '
+        pool:
+          vmImage: 'windows-latest'
+        timeoutInMinutes: 180
+        environment: ${{ variables.DO_ENV }}
+        strategy:
+            runOnce:
+              deploy:
+                steps:
+                  - checkout: self
+                  - task: AzurePowerShell@5
+                    displayName: 'Deploy Bicep Template'
+                    inputs:
+                      azureSubscription: ${{ variables.SERVICE_CONNECTION }}
+                      ScriptType: 'FilePath'
+                      ScriptPath: '$(System.DefaultWorkingDirectory)/bicep/scripts/deploy-main.ps1'
+                      azurePowerShellVersion: 'LatestVersion'
+                      pwsh: true
 
 ###########################################
 ################### PROD ##################
@@ -26,8 +40,22 @@ stages:
           parameters:
             deploymentEnvironment: 'prod'
       jobs:
-        - template: release.yml
-          parameters:
-            adoEnvironment: ${{ variables.DO_ENV }}
-            deploymentEnvironment: 'prod'
-            serviceConnection: ${{ variables.SERVICE_CONNECTION }}
+        - deployment: deploy
+          displayName: 'Infrastructure deploy - prod '
+          pool:
+            vmImage: 'windows-latest'
+          timeoutInMinutes: 180
+          environment: ${{ variables.DO_ENV }}
+          strategy:
+              runOnce:
+                deploy:
+                  steps:
+                    - checkout: self
+                    - task: AzurePowerShell@5
+                      displayName: 'Deploy Bicep Template'
+                      inputs:
+                        azureSubscription: ${{ variables.SERVICE_CONNECTION }}
+                        ScriptType: 'FilePath'
+                        ScriptPath: '$(System.DefaultWorkingDirectory)/bicep/scripts/deploy-main.ps1'
+                        azurePowerShellVersion: 'LatestVersion'
+                        pwsh: true
