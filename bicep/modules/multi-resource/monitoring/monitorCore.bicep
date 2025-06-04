@@ -1,3 +1,5 @@
+// Please update
+
 //Azure Monitor
 // Log Analytics workspace + diagnostics + action group
 /*

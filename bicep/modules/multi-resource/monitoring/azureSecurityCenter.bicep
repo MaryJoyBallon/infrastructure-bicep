@@ -1,3 +1,5 @@
+// Please update
+
 // Azure Security Center (Defender)
 /*
 Microsoft.Security/pricings
