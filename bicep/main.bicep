@@ -10,15 +10,15 @@ param storageAccountNames array
 @description('Name of the Key Vault')
 param keyVaultName string
 
-//Deploy resource group at subscription scope
+// Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
 
 resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   name: resourceGroupName
   location: location
 }
-
-module ipgroup2 './modules/ipGroup.bicep' = {
+/*
+module ipgroup2 './modules/single/ipGroup.bicep' = {
   scope: rg
   name: 'deploy-ipgroup'
   params: {
@@ -26,8 +26,8 @@ module ipgroup2 './modules/ipGroup.bicep' = {
     ipgroupName: 'ipgroup1'
   }
 }
-
-module storageAccounts './modules/storageAccount.bicep' = [for sa in storageAccountNames: {
+*/
+module storageAccounts './modules/multi-resource/storage/storageWithContainers.bicep' = [for sa in storageAccountNames: {
   name: 'deploy-${sa.name}'
   scope: rg
   params: {
@@ -37,7 +37,7 @@ module storageAccounts './modules/storageAccount.bicep' = [for sa in storageAcco
   }
 }]
 
-module keyvault './modules/keyVault.bicep' = {
+module keyvault './modules/single/keyVault.bicep' = {
   scope: rg
   params: {
     keyVaultName: keyVaultName

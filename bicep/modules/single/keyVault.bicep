@@ -1,12 +1,15 @@
-@description('Location')
+@description('Location for all resources.')
 param location string = resourceGroup().location
 
 @description('Name of the Key Vault')
 param keyVaultName string
+/*
+@description('Object ID of user, group, or managed identity)')
+param groupObjectId string
 
-@description('Principal ID to assign RBAC (user, service principal, or managed identity)')
-//param principalId string
-
+@description('A set of tags to assign to the Key Vault resource.')
+param tags object = {}
+*/
 resource keyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
   name: keyVaultName
   location: location
@@ -24,11 +27,11 @@ resource keyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
 }
 
 /*
-resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(keyVault.id, principalId, 'KeyVaultSecretsUser')
+resource kvSecretsUserRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(keyVault.id, groupObjectId, 'KeyVaultSecretsUser')
   scope: keyVault
   properties: {
-    principalId: principalId
+    principalId: groupObjectId
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6') // Key Vault Secrets User
     principalType: 'ServicePrincipal'
   }
