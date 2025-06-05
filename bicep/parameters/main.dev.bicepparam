@@ -26,3 +26,7 @@ param storageAccountNames = [
   }
 ]
 param keyVaultName = 'stckeyVaulttest'
+param globalTags = {
+  environment: 'dev'
+  owner: 'mballon'
+}

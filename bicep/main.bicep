@@ -10,6 +10,12 @@ param storageAccountNames array
 @description('Name of the Key Vault')
 param keyVaultName string
 
+@description('Backup vault name')
+param backupVaultName string = 'backupVault'
+
+@description('List of tags to assign to resources')
+param globalTags object = {}
+
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
 
@@ -41,5 +47,15 @@ module keyvault './modules/single/keyVault.bicep' = {
   scope: rg
   params: {
     keyVaultName: keyVaultName
+    tags: globalTags
   }
 }
+
+module backupVault './modules/single/backupVault.bicep' = {
+  scope: rg
+  params: {
+    backupVaultName: backupVaultName
+    location: location
+    tags: globalTags
+  }
+} 
