@@ -55,7 +55,6 @@ module backupVault './modules/single/backupVault.bicep' = {
   scope: rg
   params: {
     backupVaultName: backupVaultName
-    location: location
     tags: globalTags
   }
 } 
