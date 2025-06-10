@@ -4,7 +4,7 @@ param (
   [switch] $WhatIf,
 
   [Parameter()]
-  [ValidateSet('dev', 'prod')]
+  [ValidateSet('non-prod', 'prod')]
   [string] $Environment,
   [string] $Region,
   [string] $TemplateBasePath
