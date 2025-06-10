@@ -12,9 +12,6 @@ resource backupVault 'Microsoft.DataProtection/backupVaults@2025-01-01' = {
   location: location
   name: 'backupVault-${backupVaultName}'
   properties: {
-    sku: {
-      name: 'Standard'
-    }
     featureSettings: {
       crossRegionRestoreSettings: {
         state: 'Enabled'
