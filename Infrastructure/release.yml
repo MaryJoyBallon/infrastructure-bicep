@@ -13,10 +13,10 @@ parameters:
 
 jobs:
 - deployment: deploy
-  displayName: 'Infrastructure deploy - ${{ parameters.deploymentEnvironment }} '
+  displayName: 'Infra deploy - ${{ parameters.deploymentEnvironment }} '
   pool:
     vmImage: 'windows-latest'
-  timeoutInMinutes: 180
+  timeoutInMinutes: 20
   environment: ${{ parameters.adoEnvironment }} 
   strategy:
       runOnce:
