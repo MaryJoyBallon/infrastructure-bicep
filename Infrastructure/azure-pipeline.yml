@@ -15,7 +15,7 @@ stages:
 ###########################################
 ################### PROD ##################
 ###########################################
-  - ${{ if contains(variables['Build.SourceBranch'], 'main') }}:
+  - ${{ if contains(variables['Build.SourceBranch'], 'Branch-v') }}:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
       jobs:
