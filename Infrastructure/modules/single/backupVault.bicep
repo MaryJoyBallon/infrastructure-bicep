@@ -26,7 +26,7 @@ resource backupVault 'Microsoft.DataProtection/backupVaults@2025-01-01' = {
       }
     }
     replicatedRegions: [
-      'west us'
+      'westcentral'
     ]
     securitySettings: {
       softDeleteSettings: {
