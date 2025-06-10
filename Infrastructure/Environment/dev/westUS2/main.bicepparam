@@ -1,7 +1,7 @@
-using '../main.bicep'
+using '../../../main.bicep'
 
 param resourceGroupName = 'rg-mballon'
-param location = 'eastus'
+param location = 'westus2'
 param storageAccountNames = [
   {
     name: 'stcstorageaccount01'
@@ -25,7 +25,7 @@ param storageAccountNames = [
     }
   }
 ]
-param keyVaultName = 'stckeyVaulttest'
+param keyVaultName = 'stckeyVaulttest01'
 param globalTags = {
   environment: 'dev'
   owner: 'mballon'

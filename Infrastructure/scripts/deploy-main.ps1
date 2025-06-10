@@ -6,13 +6,14 @@ param (
   [Parameter()]
   [ValidateSet('dev', 'prod')]
   [string] $Environment,
+  [string] $Region,
   [string] $TemplateBasePath
 )
 
 $ParamSplat = @{
-  location              = 'eastus'
-  TemplateFile          = "$TemplateBasePath\bicep\main.bicep"
-  TemplateParameterFile = "$TemplateBasePath\bicep\parameters\main.$Environment.bicepparam"
+  location              = 'westus2'
+  TemplateFile          = "$TemplateBasePath\Infrastructure\main.bicep"
+  TemplateParameterFile = "$TemplateBasePath\Infrastructure\Environment\$Environment\$Region\main.bicepparam"
 }
 
 if ($WhatIf) {

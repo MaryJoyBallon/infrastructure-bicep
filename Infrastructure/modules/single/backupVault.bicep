@@ -8,7 +8,7 @@ param location string = resourceGroup().location
 @description('Tags to assign to the backup vault')
 param tags object = {}
 
-resource backupVault 'Microsoft.DataProtection/backupVaults@2025-02-01' = {
+resource backupVault 'Microsoft.DataProtection/backupVaults@2025-01-01' = {
   location: location
   name: 'backupVault-${backupVaultName}'
   properties: {

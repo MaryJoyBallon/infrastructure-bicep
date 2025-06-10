@@ -1,0 +1,27 @@
+###########################################
+#################### DEV ##################
+###########################################
+stages:
+  - stage: Deploy_NonProd
+    displayName: "Deploy to Non-Prod Environment"
+    jobs:
+      - template: release.yml
+        parameters:
+          adoEnvironment: 'sc-dev'
+          deploymentEnvironment: 'non-prod'
+          region: 'westus2'
+          serviceConnection: 'Infra-Bicep'
+
+###########################################
+################### PROD ##################
+###########################################
+  - ${{ if contains(variables['Build.SourceBranch'], 'main') }}:
+    - stage: Deploy_Prod
+      displayName: "Deploy to Prod Environment"
+      jobs:
+        - template: release.yml
+          parameters:
+            adoEnvironment: 'Prod'
+            deploymentEnvironment: 'prod' # The DevOps Environment with optional built-in Approval Gates    
+            region: 'westus2'
+            serviceConnection: 'Infra-Bicep' # Update to AzureServiceConnection-Non-Prod 

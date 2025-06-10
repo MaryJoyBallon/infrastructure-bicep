@@ -1,10 +1,13 @@
 parameters:
 - name: 'adoEnvironment'
   default: ''
-  displayName: Name of the DevOps environment for approvals (sc-dev or sc-prod)
-- name: deploymentEnvironment
+  displayName: Name of the DevOps environment for approvals (Non-Prod or Prod)
+- name: 'deploymentEnvironment'
   default: ''
-  displayName: Actual target environment used in Bicep (dev or prod)
+  displayName: Actual target environment used in Bicep (non-prod or prod)
+- name: 'region'
+  default: ''
+  displayName: Region to locate path in the repo
 - name: 'serviceConnection'
   default: 'Azure Subscription Service Connection'
 
@@ -25,9 +28,10 @@ jobs:
               inputs:
                 azureSubscription: ${{ parameters.serviceConnection }}
                 ScriptType: 'FilePath'
-                ScriptPath: '$(System.DefaultWorkingDirectory)/bicep/scripts/deploy-main.ps1'
+                ScriptPath: '$(System.DefaultWorkingDirectory)/Infrastructure/scripts/deploy-main.ps1'
                 ScriptArguments: >
                   -Environment ${{ parameters.deploymentEnvironment }}
+                  -Region ${{ parameters.region }}
                   -TemplateBasePath "$(System.DefaultWorkingDirectory)"
                 azurePowerShellVersion: 'LatestVersion'
                 pwsh: true
