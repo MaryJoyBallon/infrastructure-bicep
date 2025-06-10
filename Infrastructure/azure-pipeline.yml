@@ -1,5 +1,9 @@
+variables:
+  - name: DeploymentRegion
+    value: '' # Default region for deployments
+
 ###########################################
-#################### DEV ##################
+####                 DEV               ####
 ###########################################
 stages:
   - stage: Deploy_NonProd
@@ -9,11 +13,11 @@ stages:
         parameters:
           adoEnvironment: 'sc-dev'
           deploymentEnvironment: 'non-prod'
-          region: 'westus2'
+          region: ${{ variables.DeploymentRegion }}
           serviceConnection: 'Infra-Bicep'
 
 ###########################################
-################### PROD ##################
+####                 PROD              ####
 ###########################################
   - ${{ if contains(variables['Build.SourceBranch'], 'Branch-v') }}:
     - stage: Deploy_Prod
@@ -23,5 +27,5 @@ stages:
           parameters:
             adoEnvironment: 'Prod'
             deploymentEnvironment: 'prod' # The DevOps Environment with optional built-in Approval Gates    
-            region: 'westus2'
+            region: ${{ variables.DeploymentRegion }}
             serviceConnection: 'Infra-Bicep' # Update to AzureServiceConnection-Non-Prod 
