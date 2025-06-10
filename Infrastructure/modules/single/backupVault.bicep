@@ -28,6 +28,13 @@ resource backupVault 'Microsoft.DataProtection/backupVaults@2025-01-01' = {
     replicatedRegions: [
       'westcentralus'
     ]
+    resourceGuardOperationRequests: [
+      'Microsoft.DataProtection/backupVaults/delete'
+      'Microsoft.DataProtection/backupVaults/backupProtectionIntent/delete'
+      'Microsoft.DataProtection/backupVaults/backupPolicies/delete'
+      'Microsoft.DataProtection/backupVaults/disableBackup'
+      'Microsoft.DataProtection/backupVaults/update'
+    ]
     securitySettings: {
       softDeleteSettings: {
         retentionDurationInDays: 30

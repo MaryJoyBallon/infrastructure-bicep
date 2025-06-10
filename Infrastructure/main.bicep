@@ -51,6 +51,7 @@ module keyvault './modules/single/keyVault.bicep' = {
   }
 }
 
+/*
 module backupVault './modules/single/backupVault.bicep' = {
   scope: rg
   params: {
@@ -58,3 +59,4 @@ module backupVault './modules/single/backupVault.bicep' = {
     tags: globalTags
   }
 } 
+*/
