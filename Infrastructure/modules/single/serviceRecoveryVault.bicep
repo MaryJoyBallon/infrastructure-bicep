@@ -7,6 +7,25 @@ param location string
 @description('List of tags to assign to the recovery vault')
 param tags object = {}
 
+param resourceGuardName string
+
+resource resourceGuard 'Microsoft.DataProtection/resourceGuards@2025-02-01' = {
+  eTag: 'string'
+  location: location
+  name: resourceGuardName
+  properties: {
+    vaultCriticalOperationExclusionList: [
+      'Microsoft.RecoveryServices/vaults/delete'
+      'Microsoft.RecoveryServices/vaults/backupPolicies/delete'
+      'Microsoft.RecoveryServices/vaults/disableBackup'
+      'Microsoft.DataProtection/backupVaults/delete'
+      'Microsoft.DataProtection/backupVaults/backupPolicies/delete'
+      'Microsoft.DataProtection/backupVaults/disableBackup'
+    ]
+  }
+  tags: tags
+}
+
 resource recoveryVault 'Microsoft.RecoveryServices/vaults@2025-02-01' = {
   name: vaultName
   location: location
