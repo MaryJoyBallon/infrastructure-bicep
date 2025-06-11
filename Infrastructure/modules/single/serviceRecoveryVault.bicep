@@ -21,7 +21,8 @@ resource recoveryVault 'Microsoft.RecoveryServices/vaults@2025-02-01' = {
       standardTierStorageRedundancy: 'GeoRedundant'
     }
     resourceGuardOperationRequests: [
-      'string'
+      '/Providers/Microsoft.RecoveryServices/vaults/delete'
+      '/Providers/Microsoft.RecoveryServices/vaults/backupPolicies/delete'
     ]
     restoreSettings: {
       crossSubscriptionRestoreSettings: {
