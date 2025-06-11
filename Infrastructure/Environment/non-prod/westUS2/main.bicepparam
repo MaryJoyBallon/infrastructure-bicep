@@ -30,3 +30,4 @@ param globalTags = {
   environment: 'dev'
   owner: 'mballon'
 }
+param serviceVaultName = 'stcserviceVaulttest01'

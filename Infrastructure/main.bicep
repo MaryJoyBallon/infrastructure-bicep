@@ -11,7 +11,7 @@ param storageAccountNames array
 param keyVaultName string
 
 @description('Backup vault name')
-param backupVaultName string = 'backupVault'
+param serviceVaultName string
 
 @description('List of tags to assign to resources')
 param globalTags object = {}
@@ -41,10 +41,11 @@ module keyvault './modules/single/keyVault.bicep' = {
   }
 }
 
-module backupVault './modules/single/backupVault.bicep' = {
+module recoveryVault './modules/single/serviceRecoveryVault.bicep' = {
   scope: rg
   params: {
-    backupVaultName: backupVaultName
+    vaultName: serviceVaultName
+    location: location
     tags: globalTags
   }
-} 
+}
