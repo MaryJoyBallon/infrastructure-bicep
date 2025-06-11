@@ -1,7 +1,3 @@
-variables:
-  - name: DeploymentRegion
-    value: '' # Default region for deployments
-
 ###########################################
 ####                 DEV               ####
 ###########################################
@@ -13,7 +9,7 @@ stages:
         parameters:
           adoEnvironment: 'sc-dev'
           deploymentEnvironment: 'non-prod'
-          region: "$(DeploymentRegion)"
+          region: $(DeploymentRegion)
           serviceConnection: 'Infra-Bicep'
 
 ###########################################
@@ -27,5 +23,5 @@ stages:
           parameters:
             adoEnvironment: 'Prod'
             deploymentEnvironment: 'prod' # The DevOps Environment with optional built-in Approval Gates    
-            region: "$(DeploymentRegion)"
+            region: $(DeploymentRegion)
             serviceConnection: 'Infra-Bicep' # Update to AzureServiceConnection-Non-Prod 
