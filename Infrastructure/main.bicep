@@ -16,6 +16,8 @@ param serviceVaultName string
 @description('List of tags to assign to resources')
 param globalTags object = {}
 
+param resourceGuardName string
+
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
 
@@ -44,6 +46,7 @@ module keyvault './modules/single/keyVault.bicep' = {
 module recoveryVault './modules/single/serviceRecoveryVault.bicep' = {
   scope: rg
   params: {
+    resourceGuardName: resourceGuardName
     vaultName: serviceVaultName
     location: location
     tags: globalTags

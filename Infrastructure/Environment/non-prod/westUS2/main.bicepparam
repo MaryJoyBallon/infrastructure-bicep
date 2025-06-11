@@ -31,3 +31,4 @@ param globalTags = {
   owner: 'mballon'
 }
 param serviceVaultName = 'stcserviceVaulttest01'
+param resourceGuardName = 'stcresourceGuard01'
