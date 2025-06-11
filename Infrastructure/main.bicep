@@ -23,16 +23,6 @@ resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   name: resourceGroupName
   location: location
 }
-/*
-module ipgroup2 './modules/single/ipGroup.bicep' = {
-  scope: rg
-  name: 'deploy-ipgroup'
-  params: {
-    ipAddresses: ['1.1.1.1']
-    ipgroupName: 'ipgroup1'
-  }
-}
-*/
 module storageAccounts './modules/multi-resource/storage/storageWithContainers.bicep' = [for sa in storageAccountNames: {
   name: 'deploy-${sa.name}'
   scope: rg
@@ -51,7 +41,6 @@ module keyvault './modules/single/keyVault.bicep' = {
   }
 }
 
-/*
 module backupVault './modules/single/backupVault.bicep' = {
   scope: rg
   params: {
@@ -59,4 +48,3 @@ module backupVault './modules/single/backupVault.bicep' = {
     tags: globalTags
   }
 } 
-*/
