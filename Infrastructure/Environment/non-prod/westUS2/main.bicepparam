@@ -31,4 +31,9 @@ param globalTags = {
   owner: 'mballon'
 }
 param vnetName = 'hub-vnet'
-param addressSpace = '10.0.0.0/16'
+param addressSpace = '10.0.0.0/16' 
+param vnetmngmtName  = 'mgmt-vnet'
+param vnetAddressPrefix = '10.0.0.0/16'
+param subnetName  = 'mgmt-subnet'
+param subnetPrefix  = '10.0.1.0/24'
+param nsgName  = 'mgmt-nsg'

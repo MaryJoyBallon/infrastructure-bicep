@@ -22,6 +22,22 @@ param vnetName string
 @description('List of tags to assign to resources')
 param addressSpace string
 
+@description('List of tags to assign to resources')
+param vnetmngmtName string
+
+@description('List of tags to assign to resources')
+param vnetAddressPrefix string
+
+@description('List of tags to assign to resources')
+param subnetName string
+
+@description('List of tags to assign to resources')
+param subnetPrefix string
+
+@description('List of tags to assign to resources')
+param nsgName string
+
+
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
 
@@ -72,5 +88,16 @@ module hub_vnet 'modules/single/hub_vnet.bicep' = {
     location: location
     vnetName: vnetName 
     addressSpace: addressSpace 
+  }
+}
+module management 'modules/single/management_spoke_vnet.bicep' = {
+  scope: rg
+  params: {
+    location: location
+    vnetmngmtName: vnetmngmtName
+    vnetAddressPrefix: vnetAddressPrefix
+    subnetName: subnetName
+    subnetPrefix: subnetPrefix
+    nsgName: nsgName
   }
 }
