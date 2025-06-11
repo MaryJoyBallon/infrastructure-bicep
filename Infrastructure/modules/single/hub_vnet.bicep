@@ -1,6 +1,6 @@
-param location string = resourceGroup().location
-param vnetName string = 'hub-vnet'
-param addressSpace string = '10.93.5.0/24'
+param location string 
+param vnetName string 
+param addressSpace string 
 
 resource hubVnet 'Microsoft.Network/virtualNetworks@2023-04-01' = {
   name: vnetName

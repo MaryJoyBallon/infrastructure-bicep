@@ -30,3 +30,5 @@ param globalTags = {
   environment: 'dev'
   owner: 'mballon'
 }
+param vnetName = 'hub-vnet'
+param addressSpace = '10.93.5.0/24'

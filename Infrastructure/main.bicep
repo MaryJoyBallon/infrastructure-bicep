@@ -16,6 +16,12 @@ param backupVaultName string = 'backupVault'
 @description('List of tags to assign to resources')
 param globalTags object = {}
 
+@description('List of tags to assign to resources')
+param vnetName string
+
+@description('List of tags to assign to resources')
+param addressSpace string
+
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
 
@@ -60,3 +66,11 @@ module backupVault './modules/single/backupVault.bicep' = {
   }
 } 
 */
+module hub_vnet 'modules/single/hub_vnet.bicep' = {
+  scope: rg
+  params: {
+    location: location
+    vnetName: vnetName 
+    addressSpace: addressSpace 
+  }
+}
