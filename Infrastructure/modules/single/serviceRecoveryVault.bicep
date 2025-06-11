@@ -10,7 +10,6 @@ param tags object = {}
 param resourceGuardName string
 
 resource resourceGuard 'Microsoft.DataProtection/resourceGuards@2025-02-01' = {
-  eTag: 'string'
   location: location
   name: resourceGuardName
   properties: {
