@@ -9,18 +9,11 @@ param tags object = {}
 
 param resourceGuardName string
 
-resource resourceGuard 'Microsoft.DataProtection/resourceGuards@2025-02-01' = {
+resource resourceGuard 'Microsoft.DataProtection/resourceGuards@2021-07-01' = {
   location: location
   name: resourceGuardName
   properties: {
-    vaultCriticalOperationExclusionList: [
-      'Microsoft.RecoveryServices/vaults/delete'
-      'Microsoft.RecoveryServices/vaults/backupPolicies/delete'
-      'Microsoft.RecoveryServices/vaults/disableBackup'
-      'Microsoft.DataProtection/backupVaults/delete'
-      'Microsoft.DataProtection/backupVaults/backupPolicies/delete'
-      'Microsoft.DataProtection/backupVaults/disableBackup'
-    ]
+    // vaultCriticalOperationExclusionList property removed because it is read-only
   }
   tags: tags
 }
