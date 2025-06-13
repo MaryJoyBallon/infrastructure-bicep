@@ -17,7 +17,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
     }
     tenantId: subscription().tenantId
     enableRbacAuthorization: true
-    publicNetworkAccess: 'Enabled'
+    publicNetworkAccess: 'Disabled'
     enabledForDeployment: true
     enabledForTemplateDeployment: true
   }

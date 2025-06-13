@@ -2,7 +2,7 @@
 param vaultName string
 
 @description('Location for the recovery vault')
-param location string
+param location string = resourceGroup().location
 
 @description('List of tags to assign to the recovery vault')
 param tags object = {}
@@ -12,9 +12,7 @@ param resourceGuardName string
 resource resourceGuard 'Microsoft.DataProtection/resourceGuards@2021-07-01' = {
   location: location
   name: resourceGuardName
-  properties: {
-    // vaultCriticalOperationExclusionList property removed because it is read-only
-  }
+  properties: {}
   tags: tags
 }
 
@@ -32,8 +30,7 @@ resource recoveryVault 'Microsoft.RecoveryServices/vaults@2025-02-01' = {
       standardTierStorageRedundancy: 'GeoRedundant'
     }
     resourceGuardOperationRequests: [
-      '/Providers/Microsoft.RecoveryServices/vaults/delete'
-      '/Providers/Microsoft.RecoveryServices/vaults/backupPolicies/delete'
+      resourceGuard.id
     ]
     restoreSettings: {
       crossSubscriptionRestoreSettings: {

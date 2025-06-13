@@ -48,7 +48,6 @@ module recoveryVault './modules/single/serviceRecoveryVault.bicep' = {
   params: {
     resourceGuardName: resourceGuardName
     vaultName: serviceVaultName
-    location: location
     tags: globalTags
   }
 }
