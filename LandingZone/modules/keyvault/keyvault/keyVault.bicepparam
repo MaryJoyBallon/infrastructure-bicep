@@ -8,9 +8,9 @@ param globalTags = {
   owner: 'mballon'
 }
 
-param publicNetworkAccess = 'Enabled'
-param sku = 'standard'
-param enabledForDiskEncryption = true
-param enablePurgeProtection = true
-param enableRbacAuthorization = true
-param enableSoftDelete = true
+param publicNetworkAccess = 'Disabled'
+param sku = 'premium'
+param enabledForDiskEncryption = false
+param enablePurgeProtection = false
+param enableRbacAuthorization = false
+param enableSoftDelete = false
