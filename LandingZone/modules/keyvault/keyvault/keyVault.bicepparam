@@ -11,6 +11,6 @@ param globalTags = {
 param publicNetworkAccess = 'Disabled'
 param sku = 'premium'
 param enabledForDiskEncryption = false
-param enablePurgeProtection = false
+param enablePurgeProtection = true
 param enableRbacAuthorization = false
 param enableSoftDelete = true
