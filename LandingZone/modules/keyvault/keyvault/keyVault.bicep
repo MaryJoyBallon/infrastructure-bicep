@@ -12,13 +12,13 @@ param publicNetworkAccess string
 param sku string
 
 @description('Azure region for the Key Vault.')
-param azRegion string = resourceGroup().location
+param azRegion string
 
 @description('Enable disk encryption for the Key Vault.')
 param enabledForDiskEncryption bool
 
 @description('Enable purge protection for the Key Vault.')
-param enablePurgeProtection bool = true
+param enablePurgeProtection bool
 
 @description('Enable RBAC authorization for the Key Vault.')
 param enableRbacAuthorization bool
