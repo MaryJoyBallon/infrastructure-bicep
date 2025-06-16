@@ -13,4 +13,4 @@ param sku = 'premium'
 param enabledForDiskEncryption = false
 param enablePurgeProtection = false
 param enableRbacAuthorization = false
-param enableSoftDelete = false
+param enableSoftDelete = true
