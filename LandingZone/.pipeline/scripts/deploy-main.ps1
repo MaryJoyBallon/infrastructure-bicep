@@ -6,6 +6,7 @@ param (
   [Parameter()]
   [ValidateSet('nonProd', 'prod')]
   [string] $Environment,
+  [string] $BicepFileName,
   [string] $ModulePath,
   [string] $TemplateBasePath
 )
