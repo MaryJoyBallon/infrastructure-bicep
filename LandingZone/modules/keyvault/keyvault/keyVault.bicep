@@ -50,6 +50,7 @@ resource KeyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
        family: 'A'
       name: sku
     }
+    accessPolicies: []
   }
 }
 
