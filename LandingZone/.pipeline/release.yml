@@ -5,9 +5,9 @@ parameters:
 - name: 'deploymentEnvironment'
   default: ''
   displayName: Actual target environment used in Bicep (non-prod or prod)
-- name: 'region'
+- name: 'modulePath'
   default: ''
-  displayName: Region to locate path in the repo
+  displayName: Path to the Bicep modules
 - name: 'serviceConnection'
   default: 'Azure Subscription Service Connection'
 
@@ -28,10 +28,10 @@ jobs:
               inputs:
                 azureSubscription: ${{ parameters.serviceConnection }}
                 ScriptType: 'FilePath'
-                ScriptPath: '$(System.DefaultWorkingDirectory)/scripts/deploy-main.ps1'
+                ScriptPath: '$(System.DefaultWorkingDirectory)/LandingZone/.pipeline/scripts/deploy-main.ps1'
                 ScriptArguments: >
                   -Environment ${{ parameters.deploymentEnvironment }}
-                  -Region ${{ parameters.region }}
+                  -ModulePath ${{ parameters.modulePath }}
                   -TemplateBasePath "$(System.DefaultWorkingDirectory)"
                 azurePowerShellVersion: 'LatestVersion'
                 pwsh: true

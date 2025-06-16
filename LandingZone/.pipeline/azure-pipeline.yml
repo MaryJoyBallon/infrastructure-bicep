@@ -7,21 +7,21 @@ stages:
     jobs:
       - template: release.yml
         parameters:
-          adoEnvironment: 'schs-dev'
+          adoEnvironment: 'sc-dev'
           deploymentEnvironment: 'nonProd'
-          region: $(DeploymentRegion)
-          serviceConnection: 'AzureServiceConnection-nonProd'
+          modulePath: $(ModulePath)
+          serviceConnection: 'Infra-Bicep' # 'AzureServiceConnection-nonProd'
 
 ###########################################
 ####                 PROD              ####
 ###########################################
-  - ${{ if contains(variables['Build.SourceBranch'], 'main') }}:
+  - ${{ if contains(variables['Build.SourceBranch'], 'branch-v') }}:
     - stage: Deploy_Prod
       displayName: "Deploy to Prod Environment"
       jobs:
         - template: release.yml
           parameters:
-            adoEnvironment: 'schs-dev'
-            deploymentEnvironment: 'Prod' # The DevOps Environment with optional built-in Approval Gates    
-            region: $(DeploymentRegion)
+            adoEnvironment: 'schs-prod'
+            deploymentEnvironment: 'Prod' # The DevOps Environment with optional built-in Approval Gates
+            modulePath: $(ModulePath)
             serviceConnection: 'AzureServiceConnection-Prod'
