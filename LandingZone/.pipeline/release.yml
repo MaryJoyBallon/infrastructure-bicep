@@ -1,0 +1,37 @@
+parameters:
+- name: 'adoEnvironment'
+  default: ''
+  displayName: Name of the DevOps environment for approvals (Non-Prod or Prod)
+- name: 'deploymentEnvironment'
+  default: ''
+  displayName: Actual target environment used in Bicep (non-prod or prod)
+- name: 'region'
+  default: ''
+  displayName: Region to locate path in the repo
+- name: 'serviceConnection'
+  default: 'Azure Subscription Service Connection'
+
+jobs:
+- deployment: deploy
+  displayName: 'Infra deploy - ${{ parameters.deploymentEnvironment }} '
+  pool:
+    vmImage: 'windows-latest'
+  timeoutInMinutes: 20
+  environment: ${{ parameters.adoEnvironment }} 
+  strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+            - task: AzurePowerShell@5
+              displayName: 'Deploy Bicep Template'
+              inputs:
+                azureSubscription: ${{ parameters.serviceConnection }}
+                ScriptType: 'FilePath'
+                ScriptPath: '$(System.DefaultWorkingDirectory)/scripts/deploy-main.ps1'
+                ScriptArguments: >
+                  -Environment ${{ parameters.deploymentEnvironment }}
+                  -Region ${{ parameters.region }}
+                  -TemplateBasePath "$(System.DefaultWorkingDirectory)"
+                azurePowerShellVersion: 'LatestVersion'
+                pwsh: true
