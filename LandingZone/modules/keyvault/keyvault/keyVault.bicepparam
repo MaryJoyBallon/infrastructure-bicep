@@ -7,3 +7,10 @@ param globalTags = {
   environment: 'dev'
   owner: 'mballon'
 }
+
+param publicNetworkAccess = 'Enabled'
+param sku = 'standard'
+param enabledForDiskEncryption = true
+param enablePurgeProtection = true
+param enableRbacAuthorization = true
+param enableSoftDelete = true

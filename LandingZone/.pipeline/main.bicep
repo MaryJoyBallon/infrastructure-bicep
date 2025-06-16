@@ -1,14 +1,14 @@
-@description('The name for the resource group')
 param resourceGroupName string
-
-@description('Location for the Resource Group')
 param azRegion string
-
-@description('Name of the Key Vault')
 param keyVaultName string
-
-@description('List of tags to assign to resources')
 param globalTags object = {}
+
+param publicNetworkAccess string
+param sku string
+param enabledForDiskEncryption bool
+param enablePurgeProtection bool
+param enableRbacAuthorization bool
+param enableSoftDelete bool
 
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
@@ -22,13 +22,13 @@ module keyvault '../modules/keyvault/keyvault/keyVault.bicep' = {
   scope: rg
   params: {
     azRegion: azRegion
-    enabledForDiskEncryption: true
-    enablePurgeProtection: true
-    enableRbacAuthorization: true
-    enableSoftDelete: true
+    enabledForDiskEncryption: enabledForDiskEncryption
+    enablePurgeProtection: enablePurgeProtection
+    enableRbacAuthorization: enableRbacAuthorization
+    enableSoftDelete: enableSoftDelete
     keyVaultName: keyVaultName
     tags: globalTags
-    publicNetworkAccess: 'Enabled'
-    sku: 'premium'
+    publicNetworkAccess: publicNetworkAccess
+    sku: sku
   }
 }
