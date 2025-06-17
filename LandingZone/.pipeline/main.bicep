@@ -50,4 +50,7 @@ module keyvaultAP '../modules/keyvault/keyvault_access_policy/keyVaultAccessPoli
     storagePermissions: storagePermissions
     certificatePermissions: certificatePermissions
   }
+  dependsOn: [
+    keyvault
+  ]
 }

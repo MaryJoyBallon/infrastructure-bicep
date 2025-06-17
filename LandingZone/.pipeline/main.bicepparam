@@ -13,7 +13,7 @@ param publicNetworkAccess = 'Disabled'
 param sku = 'standard'
 param enabledForDiskEncryption = false
 param enablePurgeProtection = true
-param enableRbacAuthorization = false
+param enableRbacAuthorization = true
 param enableSoftDelete = true
 
 // Key Vault Access Policy parameters
