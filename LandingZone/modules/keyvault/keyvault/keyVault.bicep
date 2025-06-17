@@ -1,4 +1,4 @@
-@description('Public network access for the Key Vault. Allowed values: "Enabled", "Disabled".')
+@description('Public network access for the Key Vault.')
 @allowed([
   'Enabled'
   'Disabled'
