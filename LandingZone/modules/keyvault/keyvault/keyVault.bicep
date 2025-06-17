@@ -35,7 +35,7 @@ param tags object = {}
 @description('Tenant ID for the Key Vault. Defaults to the current subscription tenant ID.')
 param tenantID string = subscription().tenantId
 
-resource KeyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
+resource KeyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
   name: keyVaultName
   location: azRegion
   tags: tags

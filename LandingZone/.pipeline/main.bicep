@@ -32,3 +32,23 @@ module keyvault '../modules/keyvault/keyvault/keyVault.bicep' = {
     sku: sku
   }
 }
+
+
+//######################################### Key Vault Access Policy Module
+param objectId string
+param keyPermissions array = []
+param secretPermissions array = []
+param storagePermissions array = []
+param certificatePermissions array = []
+param keyvaultAccessPolicy string
+module keyvaultAP '../modules/keyvault/keyvault_access_policy/keyVaultAccessPolicy.bicep' = {
+  scope: rg
+  params: {
+    keyvaultAccessPolicy: keyvaultAccessPolicy
+    objectId: objectId
+    keyPermissions: keyPermissions
+    secretPermissions: secretPermissions
+    storagePermissions: storagePermissions
+    certificatePermissions: certificatePermissions
+  }
+}
