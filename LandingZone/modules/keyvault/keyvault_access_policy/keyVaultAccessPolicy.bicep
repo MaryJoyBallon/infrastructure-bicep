@@ -19,8 +19,16 @@ param certificatePermissions array = []
 @description('Name of the Key Vault access policy resource')
 param keyvaultAccessPolicy string
 
-resource symbolicname 'Microsoft.KeyVault/vaults/accessPolicies@2024-12-01-preview' = {
+@description('Name of the Key Vault')
+param keyVaultName string
+
+resource keyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' existing = {
+  name: keyVaultName
+}
+
+resource keyVaultAC 'Microsoft.KeyVault/vaults/accessPolicies@2024-12-01-preview' = {
   name: keyvaultAccessPolicy
+  parent: keyVault
   properties: {
     accessPolicies: [
       {

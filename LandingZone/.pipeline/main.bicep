@@ -44,6 +44,7 @@ param keyvaultAccessPolicy string
 module keyvaultAP '../modules/keyvault/keyvault_access_policy/keyVaultAccessPolicy.bicep' = {
   scope: rg
   params: {
+    keyVaultName: keyVaultName
     keyvaultAccessPolicy: keyvaultAccessPolicy
     objectId: objectId
     keyPermissions: keyPermissions
