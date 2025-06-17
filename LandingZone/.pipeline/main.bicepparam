@@ -108,7 +108,7 @@ param emailReceivers = [
 param smsReceivers = [
   {
     name: 'mballon-sms-ops'
-    countryCode: '+63'
+    countryCode: '1'
     phoneNumber: '9305308364'
   }
 ]
