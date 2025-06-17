@@ -1,4 +1,4 @@
-using '../../../.pipeline/main.bicep'
+using 'main.bicep'
 
 param resourceGroupName = 'rg-mballon'
 param azRegion = 'westus2'
@@ -17,7 +17,6 @@ param enableRbacAuthorization = false
 param enableSoftDelete = true
 
 // Key Vault Access Policy parameters
-//param keyvaultAccessPolicy = 'stckeyVaultAccessPolicy01'
 param objectId = '1896c40b-7d2b-443e-acad-b60d96876b6d' // Replace with actual Object ID
 param keyPermissions = [
   'all'

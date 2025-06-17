@@ -2,15 +2,9 @@ parameters:
 - name: 'adoEnvironment'
   default: ''
   displayName: Name of the DevOps environment for approvals (Non-Prod or Prod)
-- name: 'bicepFileName'
-  default: ''
-  displayName: Name of the Bicep file to deploy
 - name: 'deploymentEnvironment'
   default: ''
   displayName: Actual target environment used in Bicep (non-prod or prod)
-- name: 'modulePath'
-  default: ''
-  displayName: Path to the Bicep modules
 - name: 'serviceConnection'
   default: 'Azure Subscription Service Connection'
 
@@ -34,8 +28,6 @@ jobs:
                 ScriptPath: '$(System.DefaultWorkingDirectory)/LandingZone/.pipeline/scripts/deploy-main.ps1'
                 ScriptArguments: >
                   -Environment ${{ parameters.deploymentEnvironment }}
-                  -BicepFileName ${{ parameters.bicepFileName }}
-                  -ModulePath ${{ parameters.modulePath }}
                   -TemplateBasePath "$(System.DefaultWorkingDirectory)"
                 azurePowerShellVersion: 'LatestVersion'
                 pwsh: true

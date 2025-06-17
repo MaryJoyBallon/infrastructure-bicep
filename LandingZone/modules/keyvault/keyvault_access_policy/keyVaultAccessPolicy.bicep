@@ -16,10 +16,6 @@ param storagePermissions array = []
 @description('Permissions to certificates')
 param certificatePermissions array = []
 
-/*
-@description('Name of the Key Vault access policy resource')
-param keyvaultAccessPolicy string
-*/
 @description('Name of the Key Vault')
 param keyVaultName string
 
