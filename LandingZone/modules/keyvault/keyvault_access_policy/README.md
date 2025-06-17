@@ -14,9 +14,9 @@ This Bicep module assigns an **access policy** to an existing Azure Key Vault. I
 | `keyVaultName`          | `string` | Name of the existing Key Vault. |
 | `objectId`              | `string` | Object ID of the principal (user, service principal, or managed identity). |
 | `tenantId`              | `string` | Tenant ID of the Azure AD instance. Defaults to current subscription's tenant ID. |
-| `keyPermissions`        | `array`  | List of key permissions (e.g., `get`, `create`, `list`). Default: `[]` |
-| `secretPermissions`     | `array`  | List of secret permissions (e.g., `get`, `set`, `list`). Default: `[]` |
-| `certificatePermissions`| `array`  | List of certificate permissions. Default: `[]` |
-| `storagePermissions`    | `array`  | List of storage permissions. Default: `[]` |
+| `keyPermissions`        | `array`  | List of key permissions (e.g., `get`, `create`, `list`). |
+| `secretPermissions`     | `array`  | List of secret permissions (e.g., `get`, `set`, `list`). |
+| `certificatePermissions`| `array`  | List of certificate permissions. |
+| `storagePermissions`    | `array`  | List of storage permissions. |
 
 ---

@@ -54,5 +54,3 @@ resource KeyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
   }
 }
 
-output id string = KeyVault.id
-output name string = KeyVault.name
