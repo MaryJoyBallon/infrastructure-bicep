@@ -16,9 +16,10 @@ param storagePermissions array = []
 @description('Permissions to certificates')
 param certificatePermissions array = []
 
+/*
 @description('Name of the Key Vault access policy resource')
 param keyvaultAccessPolicy string
-
+*/
 @description('Name of the Key Vault')
 param keyVaultName string
 
@@ -27,7 +28,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' existing = {
 }
 
 resource keyVaultAC 'Microsoft.KeyVault/vaults/accessPolicies@2024-12-01-preview' = {
-  name: keyvaultAccessPolicy
+  name: 'add'
   parent: keyVault
   properties: {
     accessPolicies: [
