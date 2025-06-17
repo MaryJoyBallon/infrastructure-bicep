@@ -7,7 +7,8 @@ param globalTags = {
   owner: 'mballon'
 }
 
-// Key Vault parameters
+/*
+//######################################### Key Vault Module parameters
 param keyVaultName = 'stckeyVaulttest01'
 param publicNetworkAccess = 'Disabled'
 param sku = 'standard'
@@ -16,7 +17,7 @@ param enablePurgeProtection = true
 param enableRbacAuthorization = false
 param enableSoftDelete = true
 
-// Key Vault Access Policy parameters
+//######################################### Key Vault Access Policy Module parameters
 param objectId = '1896c40b-7d2b-443e-acad-b60d96876b6d' // Replace with actual Object ID
 param keyPermissions = [
   'all'
@@ -89,4 +90,25 @@ param storagePermissions = [
   'set'
   'setsas'
   'update'
+]
+  */
+
+//######################################### Action Group Moduleparameters
+param actionGroupName = 'stcActionGroup'
+param actionGroupShortName = 'stcAG'
+param enableActionGroup = true
+param emailReceivers = [
+  {
+    name: 'mballon-email-ops'
+    emailAddress: 'maryjoy.ballon@3cloudsolutions.com'
+    useCommonAlertSchema: true
+  }
+]
+
+param smsReceivers = [
+  {
+    name: 'mballon-sms-ops'
+    countryCode: 'PH'
+    phoneNumber: '9305308364'
+  }
 ]

@@ -1,14 +1,6 @@
 param resourceGroupName string
 param azRegion string
-param keyVaultName string
 param globalTags object = {}
-
-param publicNetworkAccess string
-param sku string
-param enabledForDiskEncryption bool
-param enablePurgeProtection bool
-param enableRbacAuthorization bool
-param enableSoftDelete bool
 
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
@@ -18,6 +10,15 @@ resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   location: azRegion
 }
 
+/*
+//######################################### Key Vault Module
+param keyVaultName string
+param publicNetworkAccess string
+param sku string
+param enabledForDiskEncryption bool
+param enablePurgeProtection bool
+param enableRbacAuthorization bool
+param enableSoftDelete bool
 module keyvault '../modules/keyvault/keyvault/keyVault.bicep' = {
   scope: rg
   params: {
@@ -53,4 +54,43 @@ module keyvaultAP '../modules/keyvault/keyvault_access_policy/keyVaultAccessPoli
   dependsOn: [
     keyvault
   ]
+}
+*/
+
+//######################################### RBAC Role Assignment Module
+// SKIPPED for now
+/*
+param roleDefinitionId string
+
+param principalId string
+param roleAssignmentName string
+
+module rbacRoleAssignment '../modules/rbac/role_assignment/rbaccustomroleMG.bicep' = {
+  scope: rg
+  params: {
+    roleDefinitionId: roleDefinitionId
+    principalId: principalId
+    roleAssignmentName: roleAssignmentName
+    scope: keyvault.id
+  }
+}
+*/
+
+//######################################### Action Group Module
+param actionGroupName string
+param actionGroupShortName string
+param enableActionGroup bool = true
+param emailReceivers array = []
+param smsReceivers array = []
+
+module actionGroup '../modules/monitor/action_group/actionGroup.bicep' = {
+  scope: rg
+  params: {
+    actionGroupName: actionGroupName
+    actionGroupShortName: actionGroupShortName
+    enableActionGroup: enableActionGroup
+    emailReceivers: emailReceivers
+    smsReceivers: smsReceivers
+    tags: globalTags
+  }
 }
