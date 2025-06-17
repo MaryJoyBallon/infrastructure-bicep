@@ -26,7 +26,11 @@ This Bicep module deploys an Azure Key Vault with configurable options, excludin
 Using Keyvault
 https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/scenarios-secrets
 
-Notes:
+## ℹ️ About `subscription().tenantId`
+
+The `subscription().tenantId` expression in Bicep returns the unique identifier (GUID) of the Azure Active Directory (AAD) tenant associated with the current subscription. This value is commonly used when configuring resources that require tenant-level information, such as Azure Key Vault. By default, the module uses `subscription().tenantId` for the `tenantID` parameter, ensuring the Key Vault is linked to the correct AAD tenant for your deployment context.
+
+## Notes:
 
 - `enableSoftDelete` - Enabling the 'soft delete' functionality is an irreversible action. Once set to `true`, this property cannot be reverted to `false`.
 
