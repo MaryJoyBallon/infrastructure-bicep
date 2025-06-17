@@ -13,7 +13,7 @@ $ParamSplat = @{
   location              = 'westus2'
 #  TemplateFile          = "$TemplateBasePath\LandingZone\$ModulePath\$BicepFileName.bicep"
   TemplateFile          = "$TemplateBasePath\LandingZone\.pipeline\main.bicep"
-  TemplateParameterFile = "$TemplateBasePath\LandingZone\.pipeline\main.bicep.bicepparam"
+  TemplateParameterFile = "$TemplateBasePath\LandingZone\.pipeline\main.bicepparam"
 }
 
 if ($WhatIf) {

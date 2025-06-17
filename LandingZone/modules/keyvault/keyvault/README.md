@@ -1,5 +1,5 @@
 # Introduction 
-# Azure Key Vault Bicep Module (Without Access Policies)
+# Azure Key Vault Bicep Module
 
 This Bicep module deploys an Azure Key Vault with configurable options, excluding access policies. It is intended for use cases where:
 - Access is managed using **RBAC**, or
