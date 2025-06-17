@@ -28,6 +28,6 @@ https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/scenarios-s
 
 Notes:
 
-- **enableSoftDelete** - Enabling the 'soft delete' functionality is an irreversible action. Once set to `true`, this property cannot be reverted to `false`.
+- `enableSoftDelete` - Enabling the 'soft delete' functionality is an irreversible action. Once set to `true`, this property cannot be reverted to `false`.
 
-- **enablePurgeProtection** - Enabling the 'purge protection' for a vault is an irreversible action. Once set to `true`, this property cannot be reverted to `false`.
+- `enablePurgeProtection` - Enabling the 'purge protection' for a vault is an irreversible action. Once set to `true`, this property cannot be reverted to `false`.
