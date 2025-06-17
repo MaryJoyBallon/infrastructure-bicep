@@ -20,3 +20,7 @@ This Bicep module assigns an **access policy** to an existing Azure Key Vault. I
 | `storagePermissions`    | `array`  | List of storage permissions. |
 
 ---
+
+### ℹ️ About `subscription().tenantId`
+
+The `subscription().tenantId` expression in Bicep returns the unique identifier (GUID) of the Azure Active Directory (AAD) tenant associated with the current subscription. This value is commonly used when configuring resources that require tenant-level information, such as Azure Key Vault. By default, the module uses `subscription().tenantId` for the `tenantID` parameter, ensuring the Key Vault is linked to the correct AAD tenant for your deployment context.
