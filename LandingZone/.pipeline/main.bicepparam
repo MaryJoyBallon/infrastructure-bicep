@@ -1,13 +1,13 @@
 using 'main.bicep'
 
 param resourceGroupName = 'rg-mballon'
-param azRegion = 'westus2'
+param location = 'westus2'
 param globalTags = {
   environment: 'dev'
   owner: 'mballon'
 }
 
-/*
+
 //######################################### Key Vault Module parameters
 param keyVaultName = 'stckeyVaulttest01'
 param publicNetworkAccess = 'Disabled'
@@ -16,7 +16,7 @@ param enabledForDiskEncryption = false
 param enablePurgeProtection = true
 param enableRbacAuthorization = false
 param enableSoftDelete = true
-
+/*
 //######################################### Key Vault Access Policy Module parameters
 param objectId = '1896c40b-7d2b-443e-acad-b60d96876b6d' // Replace with actual Object ID
 param keyPermissions = [
@@ -92,7 +92,7 @@ param storagePermissions = [
   'update'
 ]
   */
-
+/*
 //######################################### Action Group Moduleparameters
 param actionGroupName = 'stcActionGroup'
 param actionGroupShortName = 'stcAG'
@@ -112,3 +112,4 @@ param smsReceivers = [
     phoneNumber: '9305308364'
   }
 ]
+*/

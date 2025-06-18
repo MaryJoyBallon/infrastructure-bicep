@@ -1,5 +1,5 @@
 param resourceGroupName string
-param azRegion string
+param location string
 param globalTags object = {}
 
 // Specifies that the deployment target for this Bicep file is at the subscription level.
@@ -7,10 +7,10 @@ targetScope = 'subscription'
 
 resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   name: resourceGroupName
-  location: azRegion
+  location: location
 }
 
-/*
+
 //######################################### Key Vault Module
 param keyVaultName string
 param publicNetworkAccess string
@@ -22,7 +22,7 @@ param enableSoftDelete bool
 module keyvault '../modules/keyvault/keyvault/keyVault.bicep' = {
   scope: rg
   params: {
-    azRegion: azRegion
+    location: location
     enabledForDiskEncryption: enabledForDiskEncryption
     enablePurgeProtection: enablePurgeProtection
     enableRbacAuthorization: enableRbacAuthorization
@@ -34,7 +34,7 @@ module keyvault '../modules/keyvault/keyvault/keyVault.bicep' = {
   }
 }
 
-
+/*
 //######################################### Key Vault Access Policy Module
 param objectId string
 param keyPermissions array = []
@@ -75,7 +75,7 @@ module rbacRoleAssignment '../modules/rbac/role_assignment/rbaccustomroleMG.bice
   }
 }
 */
-
+/*
 //######################################### Action Group Module
 param actionGroupName string
 param actionGroupShortName string
@@ -94,3 +94,4 @@ module actionGroup '../modules/monitor/action_group/actionGroup.bicep' = {
     tags: globalTags
   }
 }
+*/

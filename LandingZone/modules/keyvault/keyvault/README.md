@@ -12,7 +12,7 @@ This Bicep module deploys an Azure Key Vault with configurable options, excludin
 | Name                       | Type     | Description |
 |----------------------------|----------|-------------|
 | `keyVaultName`             | `string` | Name of the Key Vault. Must be globally unique. |
-| `azRegion`                 | `string` | Azure region where the Key Vault will be deployed. Defaults to resource group location. |
+| `location`                 | `string` | Azure region where the Key Vault will be deployed. Defaults to resource group location. |
 | `publicNetworkAccess`      | `string` | `Enabled` or `Disabled`. Controls public access. |
 | `sku`                      | `string` | Key Vault SKU. Allowed: `standard`, `premium`. |
 | `enabledForDiskEncryption` | `bool`   | Enables disk encryption support. |

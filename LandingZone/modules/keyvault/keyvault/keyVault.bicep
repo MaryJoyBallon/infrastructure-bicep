@@ -12,19 +12,19 @@ param publicNetworkAccess string
 param sku string
 
 @description('Azure region for the Key Vault.')
-param azRegion string
+param location string = resourceGroup().location
 
 @description('Enable disk encryption for the Key Vault.')
-param enabledForDiskEncryption bool
+param enabledForDiskEncryption bool = false
 
 @description('Enable purge protection for the Key Vault.')
-param enablePurgeProtection bool
+param enablePurgeProtection bool = false
 
 @description('Enable RBAC authorization for the Key Vault.')
-param enableRbacAuthorization bool
+param enableRbacAuthorization bool = false
 
 @description('Enable soft delete for the Key Vault.')
-param enableSoftDelete bool
+param enableSoftDelete bool = false
 
 @description('Name of the Key Vault')
 param keyVaultName string
@@ -37,7 +37,7 @@ param tenantID string = subscription().tenantId
 
 resource KeyVault 'Microsoft.KeyVault/vaults@2024-12-01-preview' = {
   name: keyVaultName
-  location: azRegion
+  location: location
   tags: tags
   properties: {
     tenantId: tenantID
