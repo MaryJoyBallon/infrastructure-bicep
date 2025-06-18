@@ -10,7 +10,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   location: location
 }
 
-
+/*
 //######################################### Key Vault Module
 param keyVaultName string
 param publicNetworkAccess string
@@ -34,7 +34,7 @@ module keyvault '../modules/keyvault/keyvault/keyVault.bicep' = {
   }
 }
 
-/*
+
 //######################################### Key Vault Access Policy Module
 param objectId string
 param keyPermissions array = []
