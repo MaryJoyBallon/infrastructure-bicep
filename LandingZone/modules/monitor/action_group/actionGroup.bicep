@@ -15,7 +15,7 @@ emailReceivers: [
 ]
 */
 @description('Array of email receivers for the action group')
-param emailReceivers array
+param emailReceivers array = []
 
 /*
 smsReceivers: [
@@ -27,10 +27,10 @@ smsReceivers: [
 ]
 */
 @description('Array of SMS receivers for the action group')
-param smsReceivers array
+param smsReceivers array = []
 
 @description('Enable the action group')
-param enableActionGroup bool
+param enableActionGroup bool = false
 
 @description('Tags for the action group')
 param tags object = {}

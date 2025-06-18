@@ -75,7 +75,7 @@ module rbacRoleAssignment '../modules/rbac/role_assignment/rbaccustomroleMG.bice
   }
 }
 */
-/*
+
 //######################################### Action Group Module
 param actionGroupName string
 param actionGroupShortName string
@@ -94,4 +94,4 @@ module actionGroup '../modules/monitor/action_group/actionGroup.bicep' = {
     tags: globalTags
   }
 }
-*/
+/**/
