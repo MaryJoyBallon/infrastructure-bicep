@@ -1,10 +1,10 @@
-//############################################## Global parameters for testing Only #######
+//############################################## Global parameters for testing Only #######  TO BE DELETED
 using '../../../Stacks/test-stack/main.bicep'                      
 param resourceGroupName = 'rg-mballon'
 param location = 'westus2'
-param globalTags = {
+param tags = {
   environment: 'nonProd'
-  owner: 'devops-pipeline'
+  codebase: 'Bicep'
 }
 
 //######################################### Key Vault Module parameters

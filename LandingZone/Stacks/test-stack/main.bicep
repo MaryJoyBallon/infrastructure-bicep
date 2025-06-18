@@ -1,6 +1,6 @@
 param resourceGroupName string
 param location string
-param globalTags object = {}
+param tags object = {}
 
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
@@ -28,7 +28,7 @@ module keyvault '../../modules/keyvault/keyvault/main.bicep' = {
     enableRbacAuthorization: enableRbacAuthorization
     enableSoftDelete: enableSoftDelete
     keyVaultName: keyVaultName
-    tags: globalTags
+    tags: tags
     publicNetworkAccess: publicNetworkAccess
     sku: sku
   }
