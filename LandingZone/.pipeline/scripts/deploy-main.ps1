@@ -4,16 +4,15 @@ param (
   [switch] $WhatIf,
 
   [Parameter()]
-  [ValidateSet('nonProd', 'prod')]
-  [string] $Environment,
+  [string] $ModulePath,
   [string] $TemplateBasePath
 )
 
 $ParamSplat = @{
   location              = 'westus2'
 #  TemplateFile          = "$TemplateBasePath\LandingZone\$ModulePath\$BicepFileName.bicep"
-  TemplateFile          = "$TemplateBasePath\LandingZone\.pipeline\main.bicep"
-  TemplateParameterFile = "$TemplateBasePath\LandingZone\.pipeline\main.bicepparam"
+  TemplateFile          = "$TemplateBasePath\LandingZone\Stacks\test-stack\main.bicep"
+  TemplateParameterFile = "$TemplateBasePath\LandingZone\$ModulePath\example.bicepparam"
 }
 
 if ($WhatIf) {

@@ -9,6 +9,7 @@ stages:
         parameters:
           adoEnvironment: 'sc-dev'
           deploymentEnvironment: 'nonProd'
+          modulePath: $(ModulePath)
           serviceConnection: 'Infra-Bicep' # 'AzureServiceConnection-nonProd'
 
 ###########################################

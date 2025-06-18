@@ -3,11 +3,11 @@ using 'main.bicep'
 param resourceGroupName = 'rg-mballon'
 param location = 'westus2'
 param globalTags = {
-  environment: 'dev'
-  owner: 'mballon'
+  environment: 'nonProd'
+  owner: 'devops-pipeline'
 }
 
-/*
+
 //######################################### Key Vault Module parameters
 param keyVaultName = 'stckeyVaulttest01'
 param publicNetworkAccess = 'Disabled'
@@ -91,7 +91,6 @@ param storagePermissions = [
   'setsas'
   'update'
 ]
-  */
 
 //######################################### Action Group Moduleparameters
 param actionGroupName = 'stcActionGroup'
@@ -99,17 +98,16 @@ param actionGroupShortName = 'stcAG'
 param enableActionGroup = true
 param emailReceivers = [
   {
-    name: 'mballon-email-ops'
-    emailAddress: 'maryjoy.ballon@3cloudsolutions.com'
+    name: 'email-ops'
+    emailAddress: 'firstname.lastname@gmail.com'
     useCommonAlertSchema: true
   }
 ]
 
 param smsReceivers = [
   {
-    name: 'mballon-sms-ops'
+    name: 'sms-ops'
     countryCode: '1'
-    phoneNumber: '9305308364'
+    phoneNumber: '9305338367'
   }
 ]
-/**/

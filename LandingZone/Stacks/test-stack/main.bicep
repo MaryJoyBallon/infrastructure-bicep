@@ -1,0 +1,36 @@
+param resourceGroupName string
+param location string
+param globalTags object = {}
+
+// Specifies that the deployment target for this Bicep file is at the subscription level.
+targetScope = 'subscription'
+
+resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
+  name: resourceGroupName
+  location: location
+}
+
+
+//######################################### Key Vault Module
+param keyVaultName string
+param publicNetworkAccess string
+param sku string
+param enabledForDiskEncryption bool
+param enablePurgeProtection bool
+param enableRbacAuthorization bool
+param enableSoftDelete bool
+module keyvault '../../modules/keyvault/keyvault/main.bicep' = {
+  scope: rg
+  params: {
+    location: location
+    enabledForDiskEncryption: enabledForDiskEncryption
+    enablePurgeProtection: enablePurgeProtection
+    enableRbacAuthorization: enableRbacAuthorization
+    enableSoftDelete: enableSoftDelete
+    keyVaultName: keyVaultName
+    tags: globalTags
+    publicNetworkAccess: publicNetworkAccess
+    sku: sku
+  }
+}
+
