@@ -1,5 +1,5 @@
 //############################################## Global parameters for testing Only #######
-using '../../../Stacks/test-stack/main.bicep'                      
+using '../../../Stacks/a-test-stack/main.bicep'                      
 param resourceGroupName = 'rg-mballon'
 param location = 'westus2'
 //param globalTags = {
@@ -9,8 +9,8 @@ param location = 'westus2'
 
 //######################################### Key Vault Access Policy Module
 // using 'main.bicep'
-param keyVaultName = 'stckeyVaulttest01'
-param objectId = '1896c40b-7d2b-443e-acad-b60d96876b6d' // Replace with actual Object ID
+param keyVaultName = 'test-nonprod-wus2-kv'
+param objectId = '00000000-0000-0000-0000-000000000000' // Replace with actual Object ID
 param keyPermissions = [
   'all'
   'backup'

@@ -11,7 +11,7 @@ param (
 $ParamSplat = @{
   location              = 'westus2'
 #  TemplateFile          = "$TemplateBasePath\LandingZone\$ModulePath\$BicepFileName.bicep"
-  TemplateFile          = "$TemplateBasePath\LandingZone\Stacks\test-stack\main.bicep"
+  TemplateFile          = "$TemplateBasePath\LandingZone\Stacks\a-test-stack\main.bicep"
   TemplateParameterFile = "$TemplateBasePath\LandingZone\$ModulePath\example.bicepparam"
 }
 
