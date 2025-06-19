@@ -20,7 +20,7 @@ param skuName string = 'Standard'
 param crossSubscriptionRestoreState string = 'Disabled'
 param crossRegionRestore bool = false
 
-module recoveryServicesVault '../LandingZone/modules/recovery_services/recovery_services_vault/main.bicep' = {
+module recoveryServicesVault '../../modules/recovery_services/recovery_services_vault/main.bicep' = {
   scope: rg
   params: {
     recoveryServicesVaultName: recoveryServicesVaultName
