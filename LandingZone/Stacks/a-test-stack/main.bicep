@@ -1,6 +1,6 @@
 param resourceGroupName string
 param location string
-//param tags object = {}
+param tags object = {}
 
 // Specifies that the deployment target for this Bicep file is at the subscription level.
 targetScope = 'subscription'
@@ -10,17 +10,27 @@ resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
   location: location
 }
 
-//######################################### Key Vault Secrets Module
-param keyVaultName string
-param secretName string
+//###################################### recovery services vault
+param recoveryServicesVaultName string
+param publicNetworkAccessRSV string
+param softDeleteFeatureState string
+param isSoftDeleteFeatureStateEditable bool = false
+param vaultStorageType string = 'GeoRedundant'
+param skuName string = 'Standard'
+param crossSubscriptionRestoreState string = 'Disabled'
+param crossRegionRestore bool = false
 
-@secure()
-param secretValue string
-module keyvaultSecrets '../../modules/keyvault/keyvault_secrets/main.bicep' = {
+module recoveryServicesVault '../LandingZone/modules/recovery_services/recovery_services_vault/main.bicep' = {
   scope: rg
   params: {
-    keyVaultName: keyVaultName
-    secretName: secretName
-    secretValue: secretValue
+    recoveryServicesVaultName: recoveryServicesVaultName
+    publicNetworkAccessRSV: publicNetworkAccessRSV
+    softDeleteFeatureState: softDeleteFeatureState
+    isSoftDeleteFeatureStateEditable: isSoftDeleteFeatureStateEditable
+    vaultStorageType: vaultStorageType
+    skuName: skuName
+    crossSubscriptionRestoreState: crossSubscriptionRestoreState
+    crossRegionRestore: crossRegionRestore
+    tags: tags
   }
 }

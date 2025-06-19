@@ -103,3 +103,28 @@ module keyvaultSecrets '../LandingZone/modules/keyvault/keyvault_secrets/main.bi
     secretValue: 
   }
 }
+
+//###################################### recovery services vault
+param recoveryServicesVaultName string
+param publicNetworkAccessRSV string
+param softDeleteFeatureState string
+param isSoftDeleteFeatureStateEditable bool = false
+param vaultStorageType string = 'GeoRedundant'
+param skuName string = 'Standard'
+param crossSubscriptionRestoreState string = 'Disabled'
+param crossRegionRestore bool = false
+
+module recoveryServicesVault '../LandingZone/modules/recovery_services/recovery_services_vault/main.bicep' = {
+  scope: rg
+  params: {
+    recoveryServicesVaultName: recoveryServicesVaultName
+    publicNetworkAccessRSV: publicNetworkAccessRSV
+    softDeleteFeatureState: softDeleteFeatureState
+    isSoftDeleteFeatureStateEditable: isSoftDeleteFeatureStateEditable
+    vaultStorageType: vaultStorageType
+    skuName: skuName
+    crossSubscriptionRestoreState: crossSubscriptionRestoreState
+    crossRegionRestore: crossRegionRestore
+    tags: tags
+  }
+}
