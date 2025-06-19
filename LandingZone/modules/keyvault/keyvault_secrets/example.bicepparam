@@ -9,7 +9,7 @@ param location = 'westus2'
 
 //######################################### Key Vault Secret Module
 // using 'main.bicep'
-param keyVaultName = 'test-nonprod-wus2-kv'
+param keyVaultName = 'stckeyVaulttest01'
 param secretName = 'test-secret-name'
 
 @secure()
