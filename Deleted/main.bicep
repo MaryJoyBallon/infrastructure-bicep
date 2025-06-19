@@ -90,3 +90,16 @@ module actionGroup '../LandingZone/modules/monitor/action_group/main.bicep' = {
     tags: tags
   }
 }
+
+//######################################### Key Vault Secrets Module
+param keyVaultName string
+param secretName string
+param secretValue string
+module keyvaultSecrets '../LandingZone/modules/keyvault/keyvault_secrets/main.bicep' = {
+  scope: rg
+  params: {
+    keyVaultName: keyVaultName
+    secretName: 
+    secretValue: 
+  }
+}
